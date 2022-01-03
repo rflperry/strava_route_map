@@ -19,7 +19,7 @@ if __name__ == '__main__':
                         help='heatmap name (default: heatmap.png)')
     parser.add_argument('--zoom', type=int, default=-1,
                         help='heatmap zoom level 0-19 or -1 for auto (default: -1)')
-    parser.add_argument('--sigma', type=int, default=2,
+    parser.add_argument('--sigma', type=int, default=1,
                         help='heatmap Gaussian kernel sigma in pixel (default: 2)')
     parser.add_argument('--orange', action='store_true',
                         help='non-grayscale background')

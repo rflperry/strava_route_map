@@ -39,6 +39,7 @@ from .parse_fit import get_dataframes
 
 # globals
 HEATMAP_MAX_SIZE = (2160, 3840) # maximum heatmap size in pixel
+HEATMAP_MAX_SIZE = (2160 // 2, 3840 // 2) # (2160, 3840) # maximum heatmap size in pixel
 HEATMAP_MARGIN_SIZE = 32 # margin around heatmap trackpoints in pixel
 
 PLT_COLORMAP = 'hot' # matplotlib color map
