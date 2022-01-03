@@ -417,7 +417,10 @@ def generate_gif(args):
     data_final = smooth_trackpoints(data, m, data_hist, args)
 
     heatmaps = [create_heatmap(np.copy(supertile), np.zeros(data.shape), np.vstack(ij_data), args)]
-    for i in range(len(trackpoint_list)):
+
+    acts_per_sec = len(trackpoint_list) // (args.max_time * args.fps) + 1
+    print(f'Creating gif at {args.fps} frames per second, {acts_per_sec} activities per frame')
+    for i in range(0, len(trackpoint_list), acts_per_sec):
         # trackpoint max accumulation per pixel = 1/5 (trackpoint/meter) * res_pixel (meter/pixel) * activities
         # (Strava records trackpoints every 5 meters in average for cycling activites)
         # m = np.round((1.0/METERS_PER_TRACKPOINT)*res_pixel*(i+1))
@@ -431,7 +434,7 @@ def generate_gif(args):
 
     # save gif
     fps = max(args.fps, len(trackpoint_list // 15))
-    imageio.mimsave('{}.gif'.format(os.path.splitext(args.output)[0]), heatmaps, fps=fps)
+    imageio.mimsave('{}.gif'.format(os.path.splitext(args.output)[0]), heatmaps, fps=args.fps)
     print('Saved {}.gif'.format(os.path.splitext(args.output)[0]))
 
     # save image

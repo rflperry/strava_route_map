@@ -31,6 +31,8 @@ if __name__ == '__main__':
     #                     help='crop min/max lat/lon bounds based on data.')
     parser.add_argument('--fps', type=int, default=4,
                         help='gif frames per second (default=4)')
+    parser.add_argument('--max-time', type=int, default=15,
+                        help='Maximum gif duration, in seconds (default=15)')
 
     args = parser.parse_args()
 
